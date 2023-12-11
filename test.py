@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import random
 
 app = Flask(__name__)
@@ -24,5 +24,11 @@ def home():
     wise_saying = generate_wise_saying()
     return render_template('test.html', wise_saying=wise_saying)
 
+@app.errorhandler(404)
+def page_notfound(error):
+    return redirect("/index")
+
+# Startar servern när man kör filen
+# Samma som "flask --app run test run --host=0.0.0.0 --port=8000"
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=8000)
