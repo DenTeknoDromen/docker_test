@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: groupwork
+  labels:
+    app: groupwork
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: groupwork
+  template:
+    metadata:
+      labels:
+        app: groupwork #change to your name
+    spec:
+      containers:
+      - name: groupwork
+        image: tripplexx/groupwork #change to your own dockerhub repo
+        ports:
+        - containerPort: 8000
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podI
