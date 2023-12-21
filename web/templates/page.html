@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0); 
+            border: none; /*  Remove border */
+        }
+        .navbar-brand {
+            font-weight: 800; 
+            color: #333333;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8); 
+        }
+        .quote-btn {
+            margin-top: 200px;
+        }
+        h1 {text-align: center;
+            line-height: 250px;
+            color: #ffffff;
+            text-shadow: #000000;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top">
+        <div class="container-fluid">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-6 text-center">
+                    <span class="navbar-brand mb-0 h1 logo">Visdomsordsgenerator</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="p-3">
+            <h1>{{ wise_saying | safe }}</h1>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center py-5">
+                <button onclick="location.reload()" type="button" class="btn btn-outline-primary quote-btn"><span>Generera nya visdomsord</span></button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

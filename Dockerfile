@@ -1,8 +1,14 @@
-FROM python:3.12-slim
+FROM alpine:3.14
 
-WORKDIR /sandbox
+RUN mkdir /var/wordspeak
 
-COPY "requirements.txt" ./
+COPY ./web/ ./var/wordspeak
+
+WORKDIR /var/wordspeak
+
+RUN apk update
+
+RUN apk add python3 py3-pip --no-cache
 
 RUN pip install -r requirements.txt
 
@@ -12,4 +18,4 @@ ENV port=8000
 
 EXPOSE 8000
 
-CMD ["python", "./test.py"]
+CMD ["python3", "test.py"]
