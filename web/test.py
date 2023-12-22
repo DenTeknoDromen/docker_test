@@ -1,7 +1,13 @@
 from flask import Flask, render_template, redirect
 import random
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from prometheus_client import make_wsgi_app
 
 app = Flask(__name__)
+
+app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
+    '/metrics': make_wsgi_app()
+})
 
 def generate_wise_saying():
     sayings = [
